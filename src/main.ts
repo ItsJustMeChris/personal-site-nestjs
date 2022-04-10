@@ -19,6 +19,7 @@ async function bootstrap() {
     });
 
     const rawBodyBuffer = (req, res, buffer, encoding) => {
+      console.log(req.headers);
       if (!req.headers['X-Hub-Signature-256']) {
         console.log('no here');
 
@@ -47,6 +48,8 @@ async function bootstrap() {
     });
 
     const rawBodyBuffer = (req, res, buffer, encoding) => {
+      console.log(req.headers);
+
       if (!req.headers['X-Hub-Signature-256']) {
         console.log('no here');
         return;
