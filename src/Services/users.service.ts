@@ -39,6 +39,10 @@ export class UsersService {
       where: [{ email: username }, { username: username }],
     });
 
+    if (!user) {
+      return undefined;
+    }
+
     if (compareSync(password, user.password)) {
       return user;
     }
