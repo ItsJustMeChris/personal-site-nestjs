@@ -21,9 +21,9 @@ export class DeployGuard implements CanActivate {
     console.log('hmac', hmac);
 
     const sig =
-      'sha1=' +
+      'sha256=' +
       crypto
-        .createHmac('sha1', secretKey)
+        .createHmac('sha256', secretKey)
         .update(request.rawBody.toString())
         .digest('hex');
 
