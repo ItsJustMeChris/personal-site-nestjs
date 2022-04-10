@@ -16,6 +16,9 @@ export class DeployGuard implements CanActivate {
 
     const hmac = request.headers['x-hub-signature-256'];
 
+    console.log(request.rawBody);
+    console.log('key', secretKey);
+
     const hash = crypto
       .createHmac('sha256', secretKey)
       .update(request.rawBody)
