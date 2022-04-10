@@ -23,7 +23,7 @@ export class DeployGuard implements CanActivate {
     const hash = crypto
       .createHmac('sha256', secretKey)
       .update(request.rawBody)
-      .digest('base64');
+      .digest('hex');
 
     if (hmac === hash) {
       console.log('valid');
