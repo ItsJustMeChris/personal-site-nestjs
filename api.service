@@ -1,0 +1,35 @@
+[Unit]
+Description=API - ItsChrisDev
+Documentation=https://github.com/ItsJustMeChris/personal-site-nestjs
+After=network.target
+
+[Service]
+Environment=DBHOST=<DBHOST>
+Environment=DBPORT=<DBPORT>
+Environment=DBNAME=<DBNAME>
+Environment=DBUSER=<DBUSER>
+Environment=DBPASS=<DBPASS>
+
+Environment=JWTSECRET=<JWTSECRET>
+Environment=JWTEXPIRESIN=<JWTEXPIRESIN>
+
+Environment=S3ACCESSKEY=<S3KEY>
+Environment=S3SECRET=<S3SECRET>
+Environment=S3ENDPOINT=<S3ENDPOINT>
+Environment=S3BUCKET=<S3BUCKET>
+
+Environment=SSLCERT=<SSL-CERT-PATH.pem>
+Environment=SSLKEY=<SSL-KEY-PATH.pem>
+Environment=SSLCHAIN=<SSL-CHAIN-PATH.pem>
+
+PORT=80
+
+Environment=NODE_ENV=production
+
+Type=simple
+User=root
+ExecStart=<Node Executable> <code/app.js>
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
