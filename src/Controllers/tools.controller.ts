@@ -8,7 +8,7 @@ export class ToolsController {
   @Post('deploy')
   deploy() {
     exec(
-      'cd ~/personal-site-nestjs && git pull && npm run build && systemctl restart api',
+      'cd ~/personal-site-nestjs && git pull && /root/.nvm/versions/node/v16.14.2/bin/npm run build && systemctl restart api',
       function (err, stdout) {
         if (err) {
           // handle error
