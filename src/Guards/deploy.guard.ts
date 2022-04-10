@@ -16,10 +16,6 @@ export class DeployGuard implements CanActivate {
 
     const hmac = request.headers['x-hub-signature-256'];
 
-    console.log(request.rawBody);
-    console.log('key', secretKey);
-    console.log('hmac', hmac);
-
     const sig =
       'sha256=' +
       crypto
@@ -28,10 +24,8 @@ export class DeployGuard implements CanActivate {
         .digest('hex');
 
     if (hmac === sig) {
-      console.log('valid');
       return true;
     } else {
-      console.log('false');
       throw new ForbiddenException('Not allowed');
     }
   }
