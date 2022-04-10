@@ -3,13 +3,33 @@ import { ConfigService } from '@nestjs/config';
 import { createHmac, timingSafeEqual } from 'crypto';
 import { Request } from 'express';
 
+import {
+  createParamDecorator,
+  ExecutionContext,
+  BadRequestException,
+} from '@nestjs/common';
+
+import * as rawBody from 'raw-body';
+
+export const PlainBody = createParamDecorator(
+  async (_, context: ExecutionContext) => {
+    const req = context.switchToHttp().getRequest<import('express').Request>();
+    if (!req.readable) {
+      throw new BadRequestException('Invalid body');
+    }
+
+    const body = (await rawBody(req)).toString('utf8').trim();
+    return body;
+  },
+);
+
 @Controller('tools')
 export class ToolsController {
   constructor(private configService: ConfigService) {}
   @Post('deploy')
   async create(
     @Headers('X-Hub-Signature-256') webhookSecret: string,
-    @Body() body,
+    @PlainBody() body: string,
   ) {
     const sig = Buffer.from(webhookSecret, 'utf8');
     const hmac = createHmac('sha256', this.configService.get('deploy').secret);
