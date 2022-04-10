@@ -22,6 +22,8 @@ Environment=SSLCERT=<SSL-CERT-PATH.pem>
 Environment=SSLKEY=<SSL-KEY-PATH.pem>
 Environment=SSLCHAIN=<SSL-CHAIN-PATH.pem>
 
+Environment=CORSORIGIN=<CORSORIGIN>
+
 PORT=80
 
 Environment=NODE_ENV=production
