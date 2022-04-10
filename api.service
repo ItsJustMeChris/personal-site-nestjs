@@ -20,7 +20,6 @@ Environment=S3BUCKET=<S3BUCKET>
 
 Environment=SSLCERT=<SSL-CERT-PATH.pem>
 Environment=SSLKEY=<SSL-KEY-PATH.pem>
-Environment=SSLCHAIN=<SSL-CHAIN-PATH.pem>
 
 Environment=CORSORIGIN=<CORSORIGIN>
 

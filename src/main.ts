@@ -3,11 +3,10 @@ import { AppModule } from './Modules/app.module';
 import * as fs from 'fs';
 
 async function bootstrap() {
-  if (process.env.SSLKEY && process.env.SSLCERT && process.env.SSLCHAIN) {
+  if (process.env.SSLKEY && process.env.SSLCERT) {
     const httpsOptions = {
       key: fs.readFileSync(process.env.SSLKEY),
       cert: fs.readFileSync(process.env.SSLCERT),
-      chain: fs.readFileSync(process.env.SSLCHAIN),
     };
     const app = await NestFactory.create(AppModule, {
       httpsOptions,
