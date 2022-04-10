@@ -17,7 +17,6 @@ async function bootstrap() {
       origin: process.env.CORSORIGIN,
       optionsSuccessStatus: 200,
     });
-    await app.listen(process.env.PORT || 3000);
 
     const rawBodyBuffer = (req, res, buffer, encoding) => {
       if (!req.headers['X-Hub-Signature-256']) {
@@ -31,6 +30,8 @@ async function bootstrap() {
 
     app.use(bodyParser.urlencoded({ verify: rawBodyBuffer, extended: true }));
     app.use(bodyParser.json({ verify: rawBodyBuffer }));
+
+    await app.listen(process.env.PORT || 3000);
   } else {
     const app = await NestFactory.create(AppModule, {
       bodyParser: false,
@@ -39,7 +40,6 @@ async function bootstrap() {
       origin: process.env.CORSORIGIN,
       optionsSuccessStatus: 200,
     });
-    await app.listen(process.env.PORT || 3000);
 
     const rawBodyBuffer = (req, res, buffer, encoding) => {
       if (!req.headers['X-Hub-Signature-256']) {
@@ -53,6 +53,8 @@ async function bootstrap() {
 
     app.use(bodyParser.urlencoded({ verify: rawBodyBuffer, extended: true }));
     app.use(bodyParser.json({ verify: rawBodyBuffer }));
+
+    await app.listen(process.env.PORT || 3000);
   }
 }
 bootstrap();
