@@ -25,7 +25,6 @@ export class UploadsController {
   @UseGuards(JwtAuthGuard)
   @Get()
   get(@Query('key') key: string) {
-    console.log(key);
     return {
       url: this.s3Service.getObject(key),
     };

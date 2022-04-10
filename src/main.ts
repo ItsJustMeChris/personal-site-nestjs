@@ -19,7 +19,6 @@ async function bootstrap() {
     });
 
     const rawBodyBuffer = (req, res, buffer, encoding) => {
-      console.log(req.headers);
       if (!req.headers['x-hub-signature-256']) {
         return;
       }
@@ -43,8 +42,6 @@ async function bootstrap() {
     });
 
     const rawBodyBuffer = (req, res, buffer, encoding) => {
-      console.log(req.headers);
-
       if (!req.headers['x-hub-signature-256']) {
         return;
       }

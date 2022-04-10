@@ -21,7 +21,6 @@ export class TypeORMExceptionFilter implements ExceptionFilter {
         duplicates: duplicates,
       });
     } else {
-      console.log(exception);
       res.status(500).json({
         error: 'Internal server error',
       });
