@@ -1,19 +1,34 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Header, Headers, Post, Req } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { createHmac, timingSafeEqual } from 'crypto';
+import { Request } from 'express';
 
 @Controller('tools')
 export class ToolsController {
   constructor(private configService: ConfigService) {}
   @Post('deploy')
-  async create(@Body('secret') secret: string, @Body() body) {
-    console.log(body);
-    if (secret === this.configService.get('deploy').secret) {
+  async create(
+    @Headers('X-Hub-Signature-256') webhookSecret: string,
+    @Body() body,
+  ) {
+    const sig = Buffer.from(webhookSecret, 'utf8');
+    const hmac = createHmac('sha256', this.configService.get('deploy').secret);
+
+    const digest = Buffer.from(
+      'sha256=' + hmac.update(body).digest('hex'),
+      'utf8',
+    );
+    if (sig.length !== digest.length || !timingSafeEqual(digest, sig)) {
+      console.log('not safe');
       return {
-        success: true,
+        success: false,
       };
     }
+
+    console.log('safe');
+
     return {
-      success: false,
+      success: true,
     };
   }
 }
