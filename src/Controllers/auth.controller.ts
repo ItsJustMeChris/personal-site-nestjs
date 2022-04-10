@@ -13,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { TypeORMExceptionFilter } from 'src/Exceptions/typeorm.exception';
+import { JwtAuthGuard } from 'src/Guards/jwt.guard';
 import { CreateUserRequest } from 'src/Requests/user.dto';
 import { UsersService } from 'src/Services/users.service';
 
@@ -23,6 +24,12 @@ export class AuthController {
   @UseGuards(AuthGuard('local'))
   @Post('login')
   login(@Req() req) {
+    return this.usersService.login(req.user);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('refresh')
+  refresh(@Req() req) {
     return this.usersService.login(req.user);
   }
 

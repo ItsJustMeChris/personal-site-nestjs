@@ -9,6 +9,7 @@ import { AuthModule } from './Auth/auth.module';
 import { Post } from 'src/Entities/Post';
 import { PostsModule } from './Posts/posts.module';
 import { UploadsModule } from './Uploads/uploads.module';
+import { ToolsModule } from './Tools/tools.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { UploadsModule } from './Uploads/uploads.module';
     AuthModule,
     PostsModule,
     UploadsModule,
+    ToolsModule,
   ],
 
   controllers: [AppController],

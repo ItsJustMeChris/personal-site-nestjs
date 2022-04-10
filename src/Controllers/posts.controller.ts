@@ -13,7 +13,6 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { Post as PostEntity } from 'src/Entities/Post';
-import { User } from 'src/Entities/User';
 import { TypeORMExceptionFilter } from 'src/Exceptions/typeorm.exception';
 import { JwtAuthGuard } from 'src/Guards/jwt.guard';
 import { CreatePostRequest } from 'src/Requests/post.dto';
