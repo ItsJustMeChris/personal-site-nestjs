@@ -22,8 +22,10 @@ export class DeployGuard implements CanActivate {
       .digest('base64');
 
     if (hmac === hash) {
+      console.log('valid');
       return true;
     } else {
+      console.log('false');
       throw new ForbiddenException('Not allowed');
     }
   }
