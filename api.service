@@ -21,9 +21,7 @@ Environment=S3BUCKET=<S3BUCKET>
 Environment=SSLCERT=<SSL-CERT-PATH.pem>
 Environment=SSLKEY=<SSL-KEY-PATH.pem>
 
-Environment=CORSORIGIN=<CORSORIGIN>
-
-PORT=80
+Environment=PORT=<PORT>
 
 Environment=NODE_ENV=production
 
