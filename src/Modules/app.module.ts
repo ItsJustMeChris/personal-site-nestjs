@@ -3,7 +3,7 @@ import { AppController } from '../Controllers/app.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../Entities/User';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import database from 'src/configs/database';
+import database from '../Configs/database';
 import { UsersModule } from './Users/users.module';
 import { AuthModule } from './Auth/auth.module';
 import { Post } from 'src/Entities/Post';
