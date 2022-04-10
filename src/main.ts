@@ -20,10 +20,15 @@ async function bootstrap() {
 
     const rawBodyBuffer = (req, res, buffer, encoding) => {
       if (!req.headers['X-Hub-Signature-256']) {
+        console.log('no here');
+
         return;
       }
+      console.log('testing');
 
       if (buffer && buffer.length) {
+        console.log('other');
+
         req.rawBody = buffer.toString(encoding || 'utf8');
       }
     };
@@ -43,10 +48,13 @@ async function bootstrap() {
 
     const rawBodyBuffer = (req, res, buffer, encoding) => {
       if (!req.headers['X-Hub-Signature-256']) {
+        console.log('no here');
         return;
       }
+      console.log('testing');
 
       if (buffer && buffer.length) {
+        console.log('other');
         req.rawBody = buffer.toString(encoding || 'utf8');
       }
     };
