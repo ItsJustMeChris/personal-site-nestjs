@@ -12,8 +12,9 @@ export class ToolsController {
       function (err, stdout) {
         if (err) {
           // handle error
+          console.log(err);
         }
-        console.log(stdout);
+        console.log(stdout, err);
       },
     );
 
