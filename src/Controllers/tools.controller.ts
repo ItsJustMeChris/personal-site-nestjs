@@ -7,12 +7,9 @@ export class ToolsController {
   @UseGuards(DeployGuard)
   @Post('deploy')
   deploy() {
-    exec(
-      'cd ~/personal-site-nestjs && git pull && /root/.nvm/versions/node/v16.14.2/bin/npm run build && systemctl restart api',
-      function (err, stdout, stderr) {
-        console.log(err, stdout, stderr);
-      },
-    );
+    exec('sh ~/personal-site-nestjs/update.sh', function (err, stdout, stderr) {
+      console.log(err, stdout, stderr);
+    });
 
     return {
       success: true,
