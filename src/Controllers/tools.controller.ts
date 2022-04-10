@@ -29,8 +29,9 @@ export class ToolsController {
   @Post('deploy')
   async create(
     @Headers('X-Hub-Signature-256') webhookSecret: string,
-    @PlainBody() body: string,
+    @PlainBody() body,
   ) {
+    console.log('testing');
     const sig = Buffer.from(webhookSecret, 'utf8');
     const hmac = createHmac('sha256', this.configService.get('deploy').secret);
 
