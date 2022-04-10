@@ -14,7 +14,7 @@ export class DeployGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const secretKey = this.configService.get('deploy').secret;
 
-    const hmac = request.headers['X-Hub-Signature-256'];
+    const hmac = request.headers['x-hub-signature-256'];
 
     const hash = crypto
       .createHmac('sha256', secretKey)
