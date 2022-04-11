@@ -7,7 +7,7 @@ export class AppController {
     return {
       author: 'ItsJustMeChris',
       repository: 'https://github.com/ItsJustMeChris/personal-site-nestjs',
-      version: '1.2.0',
+      version: '1.2.5',
       nodejs: process.version,
       ackolwedgements: {
         nestjs: 'https://nestjs.com/',
