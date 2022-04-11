@@ -1,7 +1,5 @@
 import { Controller, Post, UseGuards } from '@nestjs/common';
 import { DeployGuard } from 'src/Guards/deploy.guard';
-import * as shell from 'shelljs';
-import npm from 'npm';
 import { exec } from 'child_process';
 
 @Controller('tools')
