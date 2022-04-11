@@ -8,7 +8,9 @@ export class ToolsController {
   @UseGuards(DeployGuard)
   @Post('deploy')
   deploy() {
-    shell.exec('npm run deploy');
+    shell.exec(
+      'cd ~/personal-site-nestjs && git pull && npm run build && systemctl restart api',
+    );
     return {
       success: true,
     };
