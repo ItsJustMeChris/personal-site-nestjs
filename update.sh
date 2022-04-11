@@ -8,7 +8,7 @@ echo "\nCommit: $commitMessage\n"
 
 git stage . && git commit -m "$commitMessage"
 
-read current < version.ts
+read current < src/version.ts
 echo "\nCurrent Build: $current\n"
 echo "Please enter the updated build version"
 
