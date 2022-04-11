@@ -14,6 +14,8 @@ export class LastFMService {
   }
 
   getRecentTracks() {
-    return this.lastFM.user.getRecentTracks('int--');
+    return this.lastFM.user.getRecentTracks(
+      this.configService.get('lastfm').username,
+    );
   }
 }
