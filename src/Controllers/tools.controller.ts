@@ -2,14 +2,18 @@ import { Controller, Post, UseGuards } from '@nestjs/common';
 import { DeployGuard } from 'src/Guards/deploy.guard';
 import * as shell from 'shelljs';
 import npm from 'npm';
+import { exec } from 'child_process';
 
 @Controller('tools')
 export class ToolsController {
   @UseGuards(DeployGuard)
   @Post('deploy')
   deploy() {
-    shell.exec(
+    exec(
       'cd ~/personal-site-nestjs && git pull && npm run build && systemctl restart api',
+      (error, stdout, stderr) => {
+        console.log(error, stdout, stderr);
+      },
     );
     return {
       success: true,
