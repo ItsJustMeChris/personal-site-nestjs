@@ -35,11 +35,13 @@ export class AppController {
         'Brewers',
         'Packers',
         'Bucks',
+        {
+          f1: {
+            Ferrari: 'Leclerc',
+            Mercedes: 'Hamilton',
+          },
+        },
       ],
-      f1: {
-        Ferrari: 'Leclerc',
-        Mercedes: 'Hamilton',
-      },
     };
   }
 }
