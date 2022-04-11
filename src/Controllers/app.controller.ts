@@ -6,7 +6,7 @@ export class AppController {
   index(): { author: string; test: string } {
     return {
       author: 'ItsJustMeChris',
-      test: 'ing',
+      test: 'inginefwi',
     };
   }
 }
