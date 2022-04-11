@@ -6,6 +6,7 @@ export class AppController {
   @Get()
   index() {
     return {
+      stop: 'war',
       author: 'ItsJustMeChris',
       repository: 'https://github.com/ItsJustMeChris/personal-site-nestjs',
       version: version,
@@ -25,7 +26,19 @@ export class AppController {
           'https://www.effectiveenvironmentalism.org/climate-charities',
         crypto: 'https://thegivingblock.com/',
       },
-      stop: 'war',
+      sports: [
+        'Bruins',
+        'Celtics',
+        'Red Sox',
+        'Patriots',
+        'Brewers',
+        'Packers',
+        'Bucks',
+      ],
+      f1: {
+        Ferrari: 'Leclerc',
+        Mercedes: 'Hamilton',
+      },
     };
   }
 }
