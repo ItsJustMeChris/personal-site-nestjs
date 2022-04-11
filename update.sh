@@ -15,7 +15,7 @@ echo "Please enter the updated build version"
 read version
 
 
-echo "export default '$version';" > version.ts
+echo "export default '$version';" > src/version.ts
 
 git stage . && git commit -m "Bump version: $version"
 npm version $version
