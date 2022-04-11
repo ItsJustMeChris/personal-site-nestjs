@@ -4,6 +4,7 @@ import {
   Controller,
   Get,
   Param,
+  Patch,
   Post,
   Req,
   UseFilters,
@@ -45,5 +46,17 @@ export class PostsController {
   @UseInterceptors(ClassSerializerInterceptor)
   single(@Param('slug') slug: string): Promise<PostEntity> {
     return this.postsService.findOneBySlug(slug);
+  }
+
+  @Patch(':slug')
+  @UsePipes(new ValidationPipe({ transform: true }))
+  @UseInterceptors(ClassSerializerInterceptor)
+  @UseFilters(TypeORMExceptionFilter)
+  @UseGuards(JwtAuthGuard)
+  update(
+    @Param('slug') slug: string,
+    @Body() createPostRequest: CreatePostRequest,
+  ) {
+    return this.postsService.update(slug, createPostRequest);
   }
 }

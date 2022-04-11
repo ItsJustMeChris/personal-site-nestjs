@@ -12,20 +12,25 @@ export class PostsService {
     private postsRepository: Repository<Post>,
   ) {}
 
-  create(post: CreatePostRequest, user: User): Promise<Post> {
-    return this.postsRepository.save({ ...post, user });
+  create(post: CreatePostRequest, user: User) {
+    return this.postsRepository.create({ ...post, user });
   }
 
   findAll(): Promise<Post[]> {
     return this.postsRepository.find({ relations: ['user'] });
   }
 
+  async update(slug: string, post: CreatePostRequest) {
+    const p = await this.findOneBySlug(slug);
+    return this.postsRepository.save({ ...p, ...post });
+  }
+
   findOne(id: number): Promise<Post> {
-    return this.postsRepository.findOne(id);
+    return this.postsRepository.findOne(id, { relations: ['user'] });
   }
 
   findOneBySlug(slug: string): Promise<Post> {
-    return this.postsRepository.findOne({ slug });
+    return this.postsRepository.findOne({ slug }, { relations: ['user'] });
   }
 
   async remove(id: string): Promise<void> {
