@@ -9,6 +9,7 @@ export class AppController {
       stop: 'war',
       author: 'ItsJustMeChris',
       repository: 'https://github.com/ItsJustMeChris/personal-site-nestjs',
+      contact: 'chris@mcgravey.dev',
       version: version,
       nodejs: process.version,
       ackolwedgements: {
