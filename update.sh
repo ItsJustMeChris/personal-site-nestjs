@@ -4,7 +4,7 @@ echo "Please enter commit message"
 
 read commitMessage
 
-echo "Commit: $commitMessage" 
+echo "\nCommit: $commitMessage\n" 
 
 git stage . && git commit -m "$commitMessage"
 
