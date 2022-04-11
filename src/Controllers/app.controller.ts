@@ -1,4 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
+import version from 'version';
 
 @Controller()
 export class AppController {
@@ -7,7 +8,7 @@ export class AppController {
     return {
       author: 'ItsJustMeChris',
       repository: 'https://github.com/ItsJustMeChris/personal-site-nestjs',
-      version: '1.2.5',
+      version: version,
       nodejs: process.version,
       ackolwedgements: {
         nestjs: 'https://nestjs.com/',
