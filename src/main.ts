@@ -28,8 +28,15 @@ async function bootstrap() {
       }
     };
 
-    app.use(bodyParser.urlencoded({ verify: rawBodyBuffer, extended: true }));
-    app.use(bodyParser.json({ verify: rawBodyBuffer }));
+    app.use(
+      bodyParser.urlencoded({
+        verify: rawBodyBuffer,
+        extended: true,
+        limit: '50mb',
+        parameterLimit: 100000,
+      }),
+    );
+    app.use(bodyParser.json({ verify: rawBodyBuffer, limit: '50mb' }));
 
     await app.listen(process.env.PORT || 3000);
   } else {
