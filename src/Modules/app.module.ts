@@ -10,6 +10,7 @@ import { Post } from 'src/Entities/Post';
 import { PostsModule } from './Posts/posts.module';
 import { UploadsModule } from './Uploads/uploads.module';
 import { ToolsModule } from './Tools/tools.module';
+import { IntegrationsController } from 'src/Controllers/integrations.controller';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { ToolsModule } from './Tools/tools.module';
     PostsModule,
     UploadsModule,
     ToolsModule,
+    IntegrationsController,
   ],
 
   controllers: [AppController],
