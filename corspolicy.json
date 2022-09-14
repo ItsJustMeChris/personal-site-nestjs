@@ -1,7 +1,7 @@
 {
   "CORSRules": [
     {
-      "AllowedOrigins": ["https://itschris.dev"],
+      "AllowedOrigins": ["https://itschris.dev", "https://chris.tech"],
       "AllowedHeaders": ["*"],
       "AllowedMethods": ["PUT", "POST", "DELETE"],
       "MaxAgeSeconds": 3000,
