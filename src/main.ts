@@ -13,8 +13,17 @@ async function bootstrap() {
       httpsOptions,
       bodyParser: false,
     });
+
+    const corsorigins = process.env.CORSORIGIN.split(',');
+
     app.enableCors({
-      origin: process.env.CORSORIGIN,
+      origin: function (origin, callback) {
+        if (!origin || corsorigins.indexOf(origin) !== -1) {
+          callback(null, true);
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+      },
       optionsSuccessStatus: 200,
     });
 

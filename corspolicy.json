@@ -1,7 +1,14 @@
 {
   "CORSRules": [
     {
-      "AllowedOrigins": ["https://itschris.dev", "https://chris.tech"],
+      "AllowedOrigins": ["https://itschris.dev"],
+      "AllowedHeaders": ["*"],
+      "AllowedMethods": ["PUT", "POST", "DELETE"],
+      "MaxAgeSeconds": 3000,
+      "ExposeHeaders": ["x-amz-server-side-encryption"]
+    },
+    {
+      "AllowedOrigins": ["https://chris.tech"],
       "AllowedHeaders": ["*"],
       "AllowedMethods": ["PUT", "POST", "DELETE"],
       "MaxAgeSeconds": 3000,
