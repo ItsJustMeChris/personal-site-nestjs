@@ -4,6 +4,8 @@ import * as fs from 'fs';
 import * as bodyParser from 'body-parser';
 
 async function bootstrap() {
+  const corsorigins = process.env.CORSORIGIN.split(',');
+
   if (process.env.SSLKEY && process.env.SSLCERT) {
     const httpsOptions = {
       key: fs.readFileSync(process.env.SSLKEY),
@@ -13,8 +15,6 @@ async function bootstrap() {
       httpsOptions,
       bodyParser: false,
     });
-
-    const corsorigins = process.env.CORSORIGIN.split(',');
 
     app.enableCors({
       origin: function (origin, callback) {
@@ -52,8 +52,15 @@ async function bootstrap() {
     const app = await NestFactory.create(AppModule, {
       bodyParser: false,
     });
+
     app.enableCors({
-      origin: process.env.CORSORIGIN,
+      origin: function (origin, callback) {
+        if (!origin || corsorigins.indexOf(origin) !== -1) {
+          callback(null, true);
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+      },
       optionsSuccessStatus: 200,
     });
 
